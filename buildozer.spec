@@ -1,54 +1,50 @@
 [app]
 title = Student Productivity App
 package.name = studentproductivity
-package.domain = org.kivy.student
-source.include_exts = py,png,jpg,kv,atlas,json
-source.dir = .
+package.domain = com.yourdomain
+source.include_exts = py,png,jpg,kv,json,ttf,otf
 version = 1.0
-requirements = python3,kivy,kivymd,plyer,requests,json,android,urllib3,certifi,chardet,idna
+requirements = python3,kivy,kivymd,plyer,requests,android
 orientation = portrait
-fullscreen = 1
+fullscreen = 0
+android.permissions = INTERNET, RECEIVE_BOOT_COMPLETED, VIBRATE, POST_NOTIFICATIONS, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE, WAKE_LOCK, FOREGROUND_SERVICE
+android.api = 34
+android.minapi = 21
+android.ndk = 23b
+android.ndk_version = 23b
+android.gradle_dependencies = com.google.android.gms:play-services-ads:22.2.0
+android.enable_androidx = True
+android.allow_cleartext = True
+android.arch = arm64-v8a,armeabi-v7a,x86_64
+android.compile_options = -O2
+p4a.branch = master
+p4a.fork = kivy/python-for-android
+android.compile_sdk = 34
+android.build_tools_version = 34.0.0
+android.gradle_dependencies = com.android.support:support-compat:28.0.0
+android.manifest_intent_filters = "intent-filter android:host=* android:scheme=http android:scheme=https"
+android.services = NOTIFICATION
+android.meta_data = android.support.VERSION:28.0.0
+android.hardware.accelerated = True
+android.allow_backup = True
+android.backup_rules = res/xml/backup_rules.xml
+android.keystore = debug.keystore
+android.preserve_artifacts = True
+android.release = True
+android.wakelock = True
+android.foreground_service_type = mediaPlayback
+android.disable_optimizations = False
+android.enable_resource_optimizer = True
+android.extra_manifest_xml = <uses-feature android:name="android.hardware.touchscreen" android:required="true"/>
 
 [buildozer]
 log_level = 2
 warn_on_root = 1
 
-[app/android]
-# Target API Level for Maximum Android Compatibility (Supports Android 14)
-android.api = 34
-android.minapi = 21
-android.ndk_api = 23
-
-# Enable AndroidX for Compatibility with Newer Libraries
-android.enable_androidx = True
-
-# Fix Gradle Build Issues on Android 13/14
-android.gradle_dependencies = com.android.tools.build:gradle:8.0.2
-android.p4a_whitelist = https://dl.google.com/dl/android/maven2/
-
-# Use Modern NDK (Fixes Crashes on Android 12+)
-android.ndk = 25c
-
-# Permissions for Storage, Network, AI API Calls, and Notifications
-android.permissions = INTERNET,ACCESS_NETWORK_STATE,MANAGE_EXTERNAL_STORAGE,POST_NOTIFICATIONS,FOREGROUND_SERVICE,WAKE_LOCK,VIBRATE
-
-# Fix Storage Issues (Android 13+ Restrictions)
-android.private_storage = True
-
-# Keep Screen Awake During Study Timer
-android.wakelock = True
-
-# Enable Hardware Acceleration for Smooth UI
-android.hardware.accelerated = True
-
-# Set Default Screen Orientation
-android.orientation = portrait
-
-# Add Required Features (Enables Internet & Notifications)
-android.features = android.hardware.touchscreen
-
-# Disable Multisampling to Avoid Rendering Issues on Some Devices
-android.p4a_extra_args = --no-multiarch
-
-# Force 64-bit Support for Android 11+ (Fixes Compatibility)
-android.archs = arm64-v8a
+[buildozer.extensions]
+android.presplash_color = #FFFFFF
+android.presplash_path = res/drawable/presplash.png
+android.icon = res/drawable/icon.png
+android.adaptive_icon_foreground = res/drawable/icon_foreground.png
+android.adaptive_icon_background = res/drawable/icon_background.png
+android.disable_customization = False
